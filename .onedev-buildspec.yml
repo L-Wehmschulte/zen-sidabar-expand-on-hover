@@ -1,0 +1,19 @@
+version: 44
+jobs:
+- name: Push to GitHub
+  steps:
+  - type: PushRepository
+    name: push
+    remoteUrl: https://github.com/L-Wehmschulte/zen-sidabar-expand-on-hover
+    passwordSecret: access-token
+    force: false
+    condition: SUCCESSFUL
+    optional: false
+  triggers:
+  - type: BranchUpdateTrigger
+    userMatch: anyone
+  - type: TagCreateTrigger
+  retryCondition: never
+  maxRetries: 3
+  retryDelay: 30
+  timeout: 14400

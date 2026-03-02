@@ -1,10 +1,12 @@
 [
     {
         "type": "string",
+        "value": "number",
         "label": "Check Interval (ms)",
         "property": "de.lwehmschulte.sidebar.check_interval",
         "force": true,
-        "defaultValue": "50"
+        "defaultValue": 50,
+        "placeholder": "50"
     },
     {
         "type": "string",
@@ -15,16 +17,20 @@
     },
     {
         "type": "string",
+        "value": "number",
         "label": "Required Slow Time (ms)",
         "property": "de.lwehmschulte.sidebar.required_slow_time",
         "force": true,
-        "defaultValue": "220"
+        "defaultValue": 220,
+        "placeholder": "220"
     },
     {
         "type": "string",
+        "value": "number",
         "label": "Collapse Delay (ms)",
         "property": "de.lwehmschulte.sidebar.collapse_delay",
         "force": true,
-        "defaultValue": "100"
+        "defaultValue": 100,
+        "placeholder": "100"
     }
 ]
