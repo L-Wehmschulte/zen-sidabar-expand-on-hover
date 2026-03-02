@@ -1,0 +1,1 @@
+# Sidebar auto expansion for ZEN
