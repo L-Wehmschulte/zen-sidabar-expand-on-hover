@@ -1,0 +1,30 @@
+[
+    {
+        "type": "string",
+        "label": "Check Interval (ms)",
+        "property": "de.lwehmschulte.sidebar.check_interval",
+        "force": true,
+        "defaultValue": "50"
+    },
+    {
+        "type": "string",
+        "label": "Speed Threshold (px/ms)",
+        "property": "de.lwehmschulte.sidebar.speed_threshold",
+        "force": true,
+        "defaultValue": "0.10"
+    },
+    {
+        "type": "string",
+        "label": "Required Slow Time (ms)",
+        "property": "de.lwehmschulte.sidebar.required_slow_time",
+        "force": true,
+        "defaultValue": "220"
+    },
+    {
+        "type": "string",
+        "label": "Collapse Delay (ms)",
+        "property": "de.lwehmschulte.sidebar.collapse_delay",
+        "force": true,
+        "defaultValue": "100"
+    }
+]

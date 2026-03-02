@@ -1,0 +1,21 @@
+{
+    "id": "de.lwehmschulte.zen-sidebar-expand-on-hover",
+    "name": "Zen Sidebar Expand on Hover",
+    "description": "A simple theme that expands the sidebar on hover.",
+    "version": "1.0.0",
+    "author": "Louis Wehmschulte",
+    "homepage": "https://dev.lwehmschulte.de/zen-sidabar-expand-on-hover",
+    "readme": "https://dev.lwehmschulte.de/zen-sidabar-expand-on-hover/README.md",
+    "license": "MIT",
+    "image": "https://dev.lwehmschulte.de/zen-sidabar-expand-on-hover/image.png",
+    "createdAt": "2026-03-02",
+    "updatedAt": "2026-03-02 08:01",
+    "fork": ["zen"],
+    "scripts": {
+        "expand.uc.js": {
+            "include": [
+                "chrome://browser/content/browser.xhtml"
+            ]
+        }
+    }
+}
