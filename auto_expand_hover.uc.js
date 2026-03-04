@@ -69,6 +69,7 @@
         }
 
         function onPopupHidden(e) {
+            console.log("Popup hidden", e.target);
             if (!isAllowedPopup(e.target)) return;
             popupOpen = false;
 
