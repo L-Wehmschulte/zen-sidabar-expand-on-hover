@@ -38,6 +38,7 @@
         };
 
         function isContextLikePopup(popup) {
+            console.log("Checking popup:", popup);
             if (!popup) return false;
             const id = popup.id || "";
             if (id === "contentAreaContextMenu") return true;
