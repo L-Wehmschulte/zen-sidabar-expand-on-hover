@@ -23,6 +23,8 @@
         let slowTime = 0;
         let interval = null;
         let collapseTimer = null;
+        let popupOpen = false;
+        let popupListenersAttached = false;
 
         let currentX = 0;
         let currentY = 0;
@@ -35,31 +37,57 @@
             collapse_delay: 100        // ms
         };
 
-        // function ensurePrefs() {
-        //     // int prefs
-        //     ["check_interval", "required_slow_time", "collapse_delay"].forEach(name => {
-        //         let full = "de.lwehmschulte.sidebar." + name;
-        //         if (!Services.prefs.prefHasUserValue(full)) {
-        //             Services.prefs.setIntPref(full, DEFAULTS[name]);
-        //         }
-        //     });
+        function isContextLikePopup(popup) {
+            if (!popup) return false;
+            const id = popup.id || "";
+            if (id === "contentAreaContextMenu") return true;
 
-        //     // float pref stored as string
-        //     let fullFloat = "de.lwehmschulte.sidebar.speed_threshold";
-        //     if (!Services.prefs.prefHasUserValue(fullFloat)) {
-        //         Services.prefs.setCharPref(fullFloat, DEFAULTS.speed_threshold.toString());
-        //     }
-        // }
+            const tag = (popup.localName || "").toLowerCase();
+            return tag === "menupopup" || tag === "panel";
+        }
+
+        function onPopupShown(e) {
+            if (!isContextLikePopup(e.target)) return;
+            popupOpen = true;
+
+            if (collapseTimer) {
+                window.clearTimeout(collapseTimer);
+                collapseTimer = null;
+            }
+        }
+
+        function onPopupHidden(e) {
+            if (!isContextLikePopup(e.target)) return;
+            popupOpen = false;
+
+            // If we're not hovered anymore, allow normal collapse scheduling now
+            scheduleCollapse();
+        }
+
+        function attachPopupListeners() {
+            if (popupListenersAttached) return;
+            window.addEventListener("popupshown", onPopupShown, true);
+            window.addEventListener("popuphidden", onPopupHidden, true);
+            popupListenersAttached = true;
+        }
+
+        function detachPopupListeners() {
+            if (!popupListenersAttached) return;
+            window.removeEventListener("popupshown", onPopupShown, true);
+            window.removeEventListener("popuphidden", onPopupHidden, true);
+            popupListenersAttached = false;
+            popupOpen = false; // reset
+        }
 
         function getPrefs() {
             // ensurePrefs();
 
-            const CHECK_INTERVAL = Services.prefs.getIntPref("de.lwehmschulte.sidebar.check_interval");
-            const REQUIRED_SLOW_TIME = Services.prefs.getIntPref("de.lwehmschulte.sidebar.required_slow_time");
-            const COLLAPSE_DELAY = Services.prefs.getIntPref("de.lwehmschulte.sidebar.collapse_delay");
+            const CHECK_INTERVAL = Services.prefs.getIntPref("de.lwehmschulte.sidebar.check_interval", DEFAULTS.check_interval);
+            const REQUIRED_SLOW_TIME = Services.prefs.getIntPref("de.lwehmschulte.sidebar.required_slow_time", DEFAULTS.required_slow_time);
+            const COLLAPSE_DELAY = Services.prefs.getIntPref("de.lwehmschulte.sidebar.collapse_delay", DEFAULTS.collapse_delay);
 
             const SPEED_THRESHOLD = parseFloat(
-                Services.prefs.getCharPref("de.lwehmschulte.sidebar.speed_threshold")
+                Services.prefs.getCharPref("de.lwehmschulte.sidebar.speed_threshold", DEFAULTS.speed_threshold.toString())
             );
 
             return { CHECK_INTERVAL, SPEED_THRESHOLD, REQUIRED_SLOW_TIME, COLLAPSE_DELAY };
@@ -98,6 +126,8 @@
                     if (!expanded && slowTime >= REQUIRED_SLOW_TIME) {
                         Services.prefs.setBoolPref("zen.view.sidebar-expanded", true);
                         expanded = true;
+
+                        attachPopupListeners();
                     }
                 } else {
                     slowTime = 0;
@@ -117,8 +147,10 @@
             // Schedule a fresh collapse
             collapseTimer = window.setTimeout(() => {
                 if (expanded) {
+                    if (popupOpen) return;
                     Services.prefs.setBoolPref("zen.view.sidebar-expanded", false);
                     expanded = false;
+                    detachPopupListeners();
                 }
             }, COLLAPSE_DELAY);
         }
