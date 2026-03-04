@@ -6,7 +6,7 @@ jobs:
     name: push
     remoteUrl: https://github.com/L-Wehmschulte/zen-sidabar-expand-on-hover
     passwordSecret: access-token
-    force: false
+    force: true
     condition: SUCCESSFUL
     optional: false
   triggers:
