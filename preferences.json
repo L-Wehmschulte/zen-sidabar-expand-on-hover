@@ -32,5 +32,13 @@
         "force": true,
         "defaultValue": 100,
         "placeholder": "100"
+    },
+    {
+        "type": "string",
+        "label": "Context Menu Popup IDs (comma-separated)",
+        "property": "de.lwehmschulte.sidebar.context_menu_popup_ids",
+        "force": true,
+        "defaultValue": "toolbar-context-menu,tabContextMenu,zenWorkspaceMoreActions,downloadsPanel,zenCreateNewPopup",
+        "placeholder": "toolbar-context-menu,tabContextMenu,zenWorkspaceMoreActions,downloadsPanel,zenCreateNewPopup"
     }
 ]
