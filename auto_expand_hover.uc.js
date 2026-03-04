@@ -49,7 +49,6 @@
         }
 
         function isAllowedPopup(popup) {
-            console.log("Checking popup", popup);
             if (!popup) return false;
             const id = popup.id || "";
             if (!id) return false;
@@ -61,6 +60,8 @@
         function onPopupShown(e) {
             if (!isAllowedPopup(e.target)) return;
             popupOpen = true;
+            collapseTimer = null;
+            console.log("Popup shown", e.target);
 
             if (collapseTimer) {
                 window.clearTimeout(collapseTimer);
@@ -69,9 +70,9 @@
         }
 
         function onPopupHidden(e) {
-            console.log("Popup hidden", e.target);
             if (!isAllowedPopup(e.target)) return;
             popupOpen = false;
+            console.log("Popup hidden", e.target);
 
             // If we're not hovered anymore, allow normal collapse scheduling now
             scheduleCollapse();
