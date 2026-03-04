@@ -49,6 +49,7 @@
         }
 
         function isAllowedPopup(popup) {
+            console.log("Checking popup", popup.id);
             if (!popup) return false;
             const id = popup.id || "";
             if (!id) return false;
