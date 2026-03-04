@@ -34,21 +34,31 @@
             check_interval: 50,        // ms
             speed_threshold: 0.10,     // px/ms
             required_slow_time: 220,   // ms
-            collapse_delay: 100        // ms
+            collapse_delay: 100,       // ms
+            context_menu_popup_ids: "toolbar-context-menu,tabContextMenu,zenWorkspaceMoreActions,downloadsPanel,zenCreateNewPopup"
         };
 
-        function isContextLikePopup(popup) {
-            console.log("Checking popup:", popup);
+        function getAllowedPopupIdSet() {
+            const { CONTEXT_MENU_POPUP_IDS } = getPrefs();
+            return new Set(
+                (CONTEXT_MENU_POPUP_IDS || "")
+                    .split(",")
+                    .map(s => s.trim())
+                    .filter(Boolean)
+            );
+        }
+
+        function isAllowedPopup(popup) {
             if (!popup) return false;
             const id = popup.id || "";
-            if (id === "contentAreaContextMenu") return true;
+            if (!id) return false;
 
-            const tag = (popup.localName || "").toLowerCase();
-            return tag === "menupopup" || tag === "panel";
+            const allowed = getAllowedPopupIdSet();
+            return allowed.has(id);
         }
 
         function onPopupShown(e) {
-            if (!isContextLikePopup(e.target)) return;
+            if (!isAllowedPopup(e.target)) return;
             popupOpen = true;
 
             if (collapseTimer) {
@@ -58,7 +68,7 @@
         }
 
         function onPopupHidden(e) {
-            if (!isContextLikePopup(e.target)) return;
+            if (!isAllowedPopup(e.target)) return;
             popupOpen = false;
 
             // If we're not hovered anymore, allow normal collapse scheduling now
@@ -88,12 +98,13 @@
             const CHECK_INTERVAL = Services.prefs.getIntPref("de.lwehmschulte.sidebar.check_interval", DEFAULTS.check_interval);
             const REQUIRED_SLOW_TIME = Services.prefs.getIntPref("de.lwehmschulte.sidebar.required_slow_time", DEFAULTS.required_slow_time);
             const COLLAPSE_DELAY = Services.prefs.getIntPref("de.lwehmschulte.sidebar.collapse_delay", DEFAULTS.collapse_delay);
+            const CONTEXT_MENU_POPUP_IDS = Services.prefs.getCharPref("de.lwehmschulte.sidebar.context_menu_popup_ids", DEFAULTS.context_menu_popup_ids);
 
             const SPEED_THRESHOLD = parseFloat(
                 Services.prefs.getCharPref("de.lwehmschulte.sidebar.speed_threshold", DEFAULTS.speed_threshold.toString())
             );
 
-            return { CHECK_INTERVAL, SPEED_THRESHOLD, REQUIRED_SLOW_TIME, COLLAPSE_DELAY };
+            return { CHECK_INTERVAL, SPEED_THRESHOLD, REQUIRED_SLOW_TIME, COLLAPSE_DELAY, CONTEXT_MENU_POPUP_IDS };
         }
 
         function startTracking(e) {
