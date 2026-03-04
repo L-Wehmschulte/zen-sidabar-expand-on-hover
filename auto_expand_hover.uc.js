@@ -66,6 +66,7 @@
         }
 
         function attachPopupListeners() {
+            console.log("Attaching popup listeners");
             if (popupListenersAttached) return;
             window.addEventListener("popupshown", onPopupShown, true);
             window.addEventListener("popuphidden", onPopupHidden, true);
@@ -73,6 +74,7 @@
         }
 
         function detachPopupListeners() {
+            console.log("Detaching popup listeners");
             if (!popupListenersAttached) return;
             window.removeEventListener("popupshown", onPopupShown, true);
             window.removeEventListener("popuphidden", onPopupHidden, true);
