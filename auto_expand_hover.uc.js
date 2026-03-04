@@ -76,6 +76,7 @@
             console.log("Popup hidden", e.target);
 
             // If we're not hovered anymore, allow normal collapse scheduling now
+            stopTracking();
             scheduleCollapse();
         }
 
