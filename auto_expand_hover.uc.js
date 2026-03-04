@@ -35,7 +35,7 @@
             speed_threshold: 0.10,     // px/ms
             required_slow_time: 220,   // ms
             collapse_delay: 100,       // ms
-            context_menu_popup_ids: "toolbar-context-menu,tabContextMenu,zenWorkspaceMoreActions,downloadsPanel,zenCreateNewPopup"
+            context_menu_popup_ids: "toolbar-context-menu,tabContextMenu,zenWorkspaceMoreActions,downloadsPanel,zenCreateNewPopup,zenFolderActions"
         };
 
         function getAllowedPopupIdSet() {
