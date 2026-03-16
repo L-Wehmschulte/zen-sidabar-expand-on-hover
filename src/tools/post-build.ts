@@ -22,7 +22,7 @@ const suffix = getCliArg<CliArg<"config-suffix">>("suffix", "");
 /** Path to the GitHub repo in the format "User/Repo" */
 const repo = "L-Wehmschulte/zen-sidebar-expand-on-hover";
 /** Name of the emitted userscript file */
-const userscriptDistFile = `${pkg.userscriptName}${suffix}.user.js`;
+const userscriptDistFile = `${pkg.userscriptName}${suffix}.uc.js`;
 
 /** URL that links directly to the file to update the userscript from */
 const scriptUrl = `https://raw.githubusercontent.com/${repo}/refs/${branch}/dist/${userscriptDistFile}`;

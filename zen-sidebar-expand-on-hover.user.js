@@ -1,25 +1,3 @@
-// ==UserScript==
-// @name              zen-sidebar-expand-on-hover
-// @namespace         https://github.com/L-Wehmschulte/zen-sidebar-expand-on-hover
-// @version           1.0.0
-// @description       A userscript template with a modern development setup using TypeScript, Rollup, and Express for local testing.
-// @homepageURL       https://github.com/L-Wehmschulte/zen-sidebar-expand-on-hover#readme
-// @supportURL        https://github.com/L-Wehmschulte/zen-sidebar-expand-on-hover/issues
-// @license           WTFPL
-// @author            L. Wehmschulte
-// @copyright         L. Wehmschulte (https://github.com/L-Wehmschulte)
-// @icon              https://raw.githubusercontent.com/L-Wehmschulte/zen-sidebar-expand-on-hover/main/assets/images/logo_48.png?b=d1cbc46
-// @match             https://lwehmschulte.de
-// @run-at            document-start
-// @downloadURL       https://raw.githubusercontent.com/L-Wehmschulte/zen-sidebar-expand-on-hover/refs/main/dist/zen-sidebar-expand-on-hover.user.js
-// @updateURL         https://raw.githubusercontent.com/L-Wehmschulte/zen-sidebar-expand-on-hover/refs/main/dist/zen-sidebar-expand-on-hover.user.js
-// @connect           github.com
-// @connect           raw.githubusercontent.com
-// @noframes
-// @resource          img-icon      https://raw.githubusercontent.com/L-Wehmschulte/zen-sidebar-expand-on-hover/main/assets/images/icon.png?b=d1cbc46
-// @resource          doc-changelog https://raw.githubusercontent.com/L-Wehmschulte/zen-sidebar-expand-on-hover/main/CHANGELOG.md?b=d1cbc46
-// ==/UserScript==
-
 (function () {
     'use strict';
 
