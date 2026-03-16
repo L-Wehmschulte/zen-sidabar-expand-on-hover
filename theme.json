@@ -20,7 +20,7 @@
         "zen"
     ],
     "scripts": {
-        "auto_expand_hover.uc.js": {
+        "zen-sidebar-expand-on-hover.user.js": {
             "include": [
                 "chrome://browser/content/browser.xhtml"
             ]
