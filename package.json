@@ -1,0 +1,55 @@
+{
+  "name": "de.lwehmschulte.zen-sidebar-expand-on-hover",
+  "userscriptName": "zen-sidebar-expand-on-hover",
+  "version": "1.0.0",
+  "description": "A userscript template with a modern development setup using TypeScript, Rollup, and Express for local testing.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "lint": "tsc --noEmit && eslint .",
+    "build": "rollup -c",
+    "build-develop": "rollup -c --config-mode development --config-host github --config-branch main",
+    "build-prod": "rollup -c --config-mode production --config-branch main",
+    "post-build": "npm run node-ts -- ./src/tools/post-build.ts",
+    "node-ts": "node --no-warnings=ExperimentalWarning --enable-source-maps --loader ts-node/esm",
+    "invisible": "node --enable-source-maps src/tools/run-invisible.mjs",
+    "test": "npm run node-ts -- ./test.ts",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/L-Wehmschulte/zen-sidebar-expand-on-hover.git"
+  },
+  "author": {
+    "name": "L. Wehmschulte",
+    "url": "https://github.com/L-Wehmschulte"
+  },
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/L-Wehmschulte/zen-sidebar-expand-on-hover/issues"
+  },
+  "homepage": "https://github.com/L-Wehmschulte/zen-sidebar-expand-on-hover",
+  "devDependencies": {
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.7",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "express": "^4.19.2",
+    "husky": "^9.1.7",
+    "rollup": "^4.14.2",
+    "rollup-plugin-execute": "^1.1.1",
+    "rollup-plugin-html": "^0.2.1",
+    "rollup-plugin-import-css": "^3.5.0",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.6.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {}
+}

@@ -32,5 +32,13 @@
         "force": true,
         "defaultValue": 100,
         "placeholder": "100"
+    },
+    {
+        "type": "number",
+        "label": "Context Menu Closed Re-Enter Timeout (ms)",
+        "property": "de.lwehmschulte.sidebar.context_menu_closed_reenter_timeout",
+        "force": true,
+        "defaultValue": 1000,
+        "placeholder": "1000"
     }
 ]
