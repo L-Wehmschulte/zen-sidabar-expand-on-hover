@@ -1,3 +1,9 @@
 #!/usr/bin/env sh
 npm run build-prod
+if [ $? -ne 0 ]
+then
+  echo "Build failed, commit aborted."
+  exit 1
+fi
+
 touch .commit

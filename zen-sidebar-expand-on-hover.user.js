@@ -8,7 +8,7 @@
 // @license           WTFPL
 // @author            L. Wehmschulte
 // @copyright         L. Wehmschulte (https://github.com/L-Wehmschulte)
-// @icon              https://raw.githubusercontent.com/L-Wehmschulte/zen-sidebar-expand-on-hover/main/assets/images/logo_48.png?b=15b88da
+// @icon              https://raw.githubusercontent.com/L-Wehmschulte/zen-sidebar-expand-on-hover/main/assets/images/logo_48.png?b=857b00f
 // @match             https://lwehmschulte.de
 // @run-at            document-start
 // @downloadURL       https://raw.githubusercontent.com/L-Wehmschulte/zen-sidebar-expand-on-hover/refs/main/dist/zen-sidebar-expand-on-hover.user.js
@@ -16,8 +16,8 @@
 // @connect           github.com
 // @connect           raw.githubusercontent.com
 // @noframes
-// @resource          img-icon      https://raw.githubusercontent.com/L-Wehmschulte/zen-sidebar-expand-on-hover/main/assets/images/icon.png?b=15b88da
-// @resource          doc-changelog https://raw.githubusercontent.com/L-Wehmschulte/zen-sidebar-expand-on-hover/main/CHANGELOG.md?b=15b88da
+// @resource          img-icon      https://raw.githubusercontent.com/L-Wehmschulte/zen-sidebar-expand-on-hover/main/assets/images/icon.png?b=857b00f
+// @resource          doc-changelog https://raw.githubusercontent.com/L-Wehmschulte/zen-sidebar-expand-on-hover/main/CHANGELOG.md?b=857b00f
 // ==/UserScript==
 
 (function () {
