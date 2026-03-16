@@ -3,6 +3,6 @@ echo checking
 if [ -e .commit ] 
 then
     rm .commit
-    git add zen-sidebar-expand-on-hover.user.js
+    git add zen-sidebar-expand-on-hover.uc.js
     git commit --amend -C HEAD --no-verify
 fi
