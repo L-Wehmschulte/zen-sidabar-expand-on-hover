@@ -34,7 +34,8 @@
         "placeholder": "100"
     },
     {
-        "type": "number",
+        "type": "string",
+        "value": "number",
         "label": "Context Menu Closed Re-Enter Timeout (ms)",
         "property": "de.lwehmschulte.sidebar.context_menu_closed_reenter_timeout",
         "force": true,
